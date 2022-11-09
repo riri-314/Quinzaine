@@ -1,0 +1,109 @@
+html{
+	background-color: #dddcdd;
+}
+
+/*css header*/
+.header{
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-left: 350px;
+	margin-right: 100px;
+  	background: white;
+}
+
+/*CSS de la page principale*/
+.main-page{
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+	padding-bottom: 50px;
+	margin-left: 350px;
+	margin-right: 100px;
+  	background: white;
+  	box-shadow: 0px 0px 10px grey;
+}
+
+.main-page p{
+	text-align: justify;
+	font-family: Georgia, serif;
+	padding-left: 15px;
+
+}
+
+.main-page h1{
+    text-align: justify;
+    font-family: Georgia, serif;
+}
+
+/*css du menu de navigation*/
+.menu-nav{
+	height: 100%;
+	width: 250px;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color:#4a536b;
+	overflow-x: hidden;
+	padding-top: 20px;
+	box-shadow: 0px 0px 10px black;
+
+}
+
+.menu-nav img {
+	display: block;
+	margin-left: auto;
+ 	margin-right: auto;
+	size: 12px;
+	width: 90%
+}
+
+.menu-nav h1{
+	text-align: center;
+	color: white;
+	font-family: serif;
+	text-decoration: none;
+	font-size: 30px;
+	display: block;
+	margin: 0px;
+}
+
+.menu-nav a {
+	padding: 6px 8px 6px 24px;
+	font-family: arial;
+	font-size: 18px;
+	color: white;
+	background-color:#4a536b;
+	text-decoration: none;
+	display: block;
+
+}
+
+.menu-nav a:hover {
+	background-color: #3e4254;
+}
+
+/*CSS du rectangle Titre de l'acceuil*/
+.rectangle{
+	height: 100px;
+	width: 450px;
+	margin-left: auto;
+    margin-right: auto;
+	background-color:#616c9f;
+	padding-top: 20px;
+	box-shadow: 0px 0px 5px black;
+}
+
+.rectangle h1{
+    text-align: center;
+    color: white;
+}
+
+
+/*css du footer*/
+.footer{
+	padding-left:250px; 
+	text-align: center;
+	text-decoration: none;
+	font-family: Georgia, serif;
+}

@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block title %}Gestion 15n{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'dashbord.css') }}">
+{% endblock %}
+
+{% block content%}
+<div class="rectangle">
+    <h1>
+        Gestion 15n Quinzaine de la bière Belge
+
+    </h1>
+</div>
+<form method="post">
+    <div>
+        <label for="SelectQuinzaineId">Choix d'une Quinzaine</label>
+        <select name="SelectQuinzaineId" id="SelectQuinzaineId" size="1">
+            <OPTION selected>Choisissez une Quizaine
+            {% for quizaine in quinzaines %}
+                <OPTION>{{quinzaine}}
+            {% endfor %}
+        </select>
+    </div>
+</form>
+
+{%endblock%}
+
