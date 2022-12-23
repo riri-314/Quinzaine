@@ -12,7 +12,7 @@
     </h1>
 </div>
 
-<h1>Selectionner 15n qui existe déja</h1>
+<h1>Selectionner 15n ou en créer une</h1>
 <p>Pour accéder au graphique concernant le nombres de veaux nés vivants et celui des mort-nés,
   écrivez ou choisissez le nom de famille d'une vache.
   Le graphique sera généré en fonction de ce nom.
@@ -26,14 +26,6 @@
         {% endfor %}
     </select>
     <button type="submit">Envoyer</button>
-</form>
-
-<h1>Créer {{last_15n}} éme 15n</h1>
-
-<form method = "POST"> <!--action="/data" rajouter pour ajouter une action aller vers page html "data"-->
-    <p>Chef 15n <input type = "text" value="oui" name = "chef_15n" /></p>
-    <p>Année <input type = "text" value="non" name = "annee" /></p>
-    <p><input type = "submit" value = "Submit" /></p>
 </form>
 
 <p>{{error_message}}</p>

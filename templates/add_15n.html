@@ -7,8 +7,19 @@
 {% block content%}
 <div class="rectangle">
     <h1>
-        Quinzaine de la bière Belge
+        Quinzaine de la bière Belge. Créer 15n
 
     </h1>
 </div>
+
+<h1>Créer {{To_add}} éme 15n</h1>
+
+<form method = "POST"> <!--action="/data" rajouter pour ajouter une action aller vers page html "data"-->
+    <p>Chef 15n <input type = "text" name = "chef_15n" /></p>
+    <p>Année <input type = "text" name = "annee" /></p>
+    <p><input type = "submit" value = "Submit" /></p>
+</form>
+
+<p>{{error_message}}</p>
 {%endblock%}
+

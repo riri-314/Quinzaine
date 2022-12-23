@@ -46,5 +46,5 @@ def add_to_quinzaine_list(numero, chef_15n, annee):
     add_line = ("INSERT INTO quinzaine_list (id_quinzaine, auteur, actif, annee) VALUES(?, ?, ?, ?)")
     cursor.execute(add_line, data[:])
     connection.commit()
-    return
+    return 1
     
