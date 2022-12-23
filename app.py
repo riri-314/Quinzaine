@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
-from quinzaine import *
+from utilities_quinzaine import *
 app = Flask(__name__)
 
 @app.route('/', methods=["POST", "GET"])
@@ -65,7 +65,7 @@ def add_15n(To_add):
             return render_template("add_15n.html", To_add = To_add, error_message=error_message)
         #print(len(annee))
         #print(chef_15n)
-        if add_to_quinzaine_list(To_add, chef_15n, annee):
+        if nouvelle_15n(To_add, chef_15n, annee):
             error_message = "Quinzaine "+str(To_add)+" ajouté à la base de donnée"
             #print(type(To_add))
             To_add = int(To_add) + 1
