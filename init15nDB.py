@@ -9,12 +9,10 @@ def Init15nDB(numero):
     cursor = connection.cursor()
     numerobis = str(numero)
     table1 = 'CREATE TABLE IF NOT EXISTS "'
-    table2 = '" (id_quinzaine INTEGER PRIMARY KEY NOT NULL, FOREIGN KEY (id_quinzaine) REFERENCES "quinzaine_list(id_quinzaine)")'
+    table2 = '" (id_quinzaine INTEGER PRIMARY KEY NOT NULL, stock INTEGER)'
     table_15n = table1 + numerobis + table2
     
     cursor.execute(table_15n)
 
     connection.commit()
     connection.close()
-
-#Init15nDB(88)

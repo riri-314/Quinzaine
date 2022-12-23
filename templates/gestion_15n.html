@@ -1,27 +1,40 @@
 {% extends "layout.html" %}
-{% block title %}Gestion 15n{% endblock %}
+{% block title %}Gestion des 15n{% endblock %}
 {% block css %}
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'dashbord.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename= 'dashbord.css') }}">
 {% endblock %}
-
 {% block content%}
+
 <div class="rectangle">
     <h1>
         Gestion 15n Quinzaine de la bière Belge
 
     </h1>
 </div>
-<form method="post">
-    <div>
-        <label for="SelectQuinzaineId">Choix d'une Quinzaine</label>
-        <select name="SelectQuinzaineId" id="SelectQuinzaineId" size="1">
-            <OPTION selected>Choisissez une Quizaine
-            {% for quizaine in quinzaines %}
-                <OPTION>{{quinzaine}}
-            {% endfor %}
-        </select>
-    </div>
+
+<h1>Selectionner 15n qui existe déja</h1>
+<p>Pour accéder au graphique concernant le nombres de veaux nés vivants et celui des mort-nés,
+  écrivez ou choisissez le nom de famille d'une vache.
+  Le graphique sera généré en fonction de ce nom.
+</p>
+
+<form method="post" class="form">
+    <select name="15n_id" >
+        <OPTION selected>Choisissez une Quinzaine
+        {% for quinzaine in quinzaines %}
+            <OPTION>{{quinzaine}}
+        {% endfor %}
+    </select>
+    <button type="submit">Envoyer</button>
 </form>
 
-{%endblock%}
+<h1>Créer {{last_15n}} éme 15n</h1>
 
+<form method = "POST"> <!--action="/data" rajouter pour ajouter une action aller vers page html "data"-->
+    <p>Chef 15n <input type = "text" value="oui" name = "chef_15n" /></p>
+    <p>Année <input type = "text" value="non" name = "annee" /></p>
+    <p><input type = "submit" value = "Submit" /></p>
+</form>
+
+<p>{{error_message}}</p>
+{% endblock %}

@@ -25,9 +25,9 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS bieres(
 #15n table will be init in a other python file
 
 cursor.execute("""CREATE TABLE IF NOT EXISTS quinzaine_list(
-                id_quinzaine                  INTEGER PRIMARY KEY AUTOINCREMENT,
+                id_quinzaine            INTEGER PRIMARY KEY NOT NULL,
                 auteur                  TEXT        NOT NULL,
-                actif                   TEXT        NOT NULL,
+                actif                   INTEGER     NOT NULL,
                 annee                   TEXT        NOT NULL
                 );
                 """)
