@@ -1,5 +1,6 @@
 #python file with all the function related to operation on tables 15n and 15n_list
 import sqlite3
+import csv
 
 connection = sqlite3.connect('quinzaine.db', check_same_thread=False)
 cursor = connection.cursor()
@@ -18,17 +19,14 @@ def get15n_id():
 #Lines "stock" and lines "ventes" are created each day (for "ventes") or each time we incert a new stock (for "stock") 
 
 def Init15nDB(numero):
-    connection = sqlite3.connect('quinzaine.db')
-    cursor = connection.cursor()
     numerobis = str(numero)
     table1 = 'CREATE TABLE IF NOT EXISTS "'
-    table2 = '" (id_quinzaine INTEGER PRIMARY KEY NOT NULL, stock INTEGER)'
+    table2 = '" (id INTEGER PRIMARY KEY NOT NULL, disponible_sur_carte INTEGER NOT NULL, FOREIGN KEY (id) REFERENCES bieres(id))'
     table_15n = table1 + numerobis + table2
     
     cursor.execute(table_15n)
 
     connection.commit()
-    connection.close()
     return 1
 
  #creat new table with numero as name and add it into 15n list and put it as active 
@@ -39,6 +37,7 @@ def Init15nDB(numero):
 def nouvelle_15n(numero, Chef_15n, annee):
     Init15nDB(numero)
     add_to_quinzaine_list(numero, Chef_15n, annee)
+    #copy list of avalable bieres from older (numero-1) 15n 
     switch_15n(numero)
     return 1
 
@@ -83,9 +82,7 @@ def initDB():
                     degre                   INTEGER     NOT NULL,
                     prix_vente              INTEGER     NOT NULL,
                     prix_achat              INTEGER     NOT NULL,
-                    a_un_barecode           INTEGER     NOT NULL,
-                    barecode                TEXT        NOT NULL,
-                    disponible_sur_carte    INTEGER     NOT NULL
+                    barecode                TEXT
                     );
                     ''')
 
@@ -102,7 +99,7 @@ def initDB():
 
 
     cursor.execute('''CREATE TABLE IF NOT EXISTS plateau(
-                    id_plateau              INTEGER PRIMARY KEY NOT NULL,
+                    id_plateau              INTEGER PRIMARY KEY AUTOINCREMENT,
                     id_biere1               INTEGER     NOT NULL,
                     id_biere2               INTEGER     NOT NULL,
                     id_biere3               INTEGER     NOT NULL,
@@ -122,4 +119,23 @@ def initDB():
     connection.commit()
     connection.close()
 
+    return 1
+
+#add data from csv_file to yable bieres in db
+def csv_db(csv_file):
+    file = open(csv_file)
+    raw = csv.reader(file)
+    contents = []
+    
+    i = 0
+    for x in raw:
+        if (i != 0):
+            contents.append(x[1:])
+            print(x[1:])
+        i += 1
+
+    insert_records = "INSERT INTO bieres (nom, format, nombre_dans_contenant, type, degre, prix_vente, prix_achat, barecode) VALUES(?, ?, ?, ?, ?, ?, ?, ?)"
+    
+    cursor.executemany(insert_records, contents)
+    connection.commit()
     return 1

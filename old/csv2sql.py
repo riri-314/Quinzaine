@@ -3,7 +3,7 @@ import csv
 import sqlite3
  
 # Connecting to the geeks database
-connection = sqlite3.connect('quizaine.db')
+connection = sqlite3.connect('quinzaine.db')
  
 # Creating a cursor object to execute
 # SQL queries on a database table
