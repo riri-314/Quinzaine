@@ -5,8 +5,6 @@ from utilities_quinzaine import *
 #you have to delete quinzaine.db before uning this file to get a new and clean db but be CAREFULL you will abviously lose all data in the old database
 initDB() #initDB, creat tables: bieres, plateu, quinzaine_list
 
-data = []
-
 connection = sqlite3.connect('quinzaine.db', check_same_thread=False)
 cursor = connection.cursor()
 

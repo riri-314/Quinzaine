@@ -166,6 +166,55 @@ def id_biere_to_15n_table(table):
     connection.commit()
     return 1
 
+#usefull for tests
+#add random stock in the last stock column
+def add_stock(table, data):
+    d = 0
+    stock = 0
+    id = [] #list of id
+    out = []
+    #long = 0 #number of id in table
+    
+    numerobis = str(table)
+    action1 = 'SELECT * FROM "'
+    action2 = '"'
+    action4 = 'SELECT id FROM "'
+    action5 = action4 + numerobis + action2
+    action3 = action1 + numerobis + action2
+
+    #get list of id in 15n table
+    for i in cursor.execute(action5):
+        tmp = []
+        for j in i:
+            if type(j) == int:
+                tmp.append(j)
+        id.append(tmp)
+
+    cursor.execute(action3)
+    
+    #get last stock column to add stock
+    for x in cursor.description:
+        if x[0][0] == "s":
+            stock = d
+        d += 1
+
+    stock_name = cursor.description[stock][0]
+    #print(stock_name)
+    print(id)
+    for x in range(len(id)):
+        tmp = []
+        tmp.append(data[x])
+        tmp.append(id[x][0])
+        out.append(tmp)
+    print(out)
+    #data = ([stock4, 1],[stock4, 2],[stock4, 3])
+    action6 = 'UPDATE "' 
+    action7 = '" SET "' 
+    action9 = '" = ? WHERE id = ?'
+    action8 = action6 + numerobis + action7 + stock_name + action9
+    cursor.executemany(action8, out)
+    connection.commit()
+    return 1
 
 #copy id and dispo_sur_carte from old (numero-1) 15n table to new 15n table
 # input: table = (int) 87, will add bieres id and availability into table "87" from table "86"
@@ -184,12 +233,69 @@ def availability_id_15n_db(table):
 
     return 1
 
+# add new column in table 15n
+# type: (int) 0 = stock, 1 = vente
+# usefull in gestion stock and scanner
+def add_column_15n(table, type):
+    ventes = 0
+    stock = 0
+    numerobis = str(table)
+    action1 = 'SELECT * FROM "'
+    action2 = '"'
+    action3 = action1 + numerobis + action2
+    cursor.execute(action3)
+    for x in cursor.description:
+        if x[0][0] == "v": 
+            ventes += 1
+        elif x[0][0] == "s":
+            stock += 1
+        print((x[0]))
+    if type == 0:
+        action1 = 'ALTER TABLE "' 
+        action2 = '" ADD "'
+        action3 = '" INTEGER'
+        name0 = str(stock+1)
+        name1 = "stock" + name0
+        action4 = action1 + numerobis + action2 + name1 + action3
+        print(action4)
+        cursor.execute(action4)
+        connection.commit
+        return 1
+    
+    elif type == 1:
+        action1 = 'ALTER TABLE "' 
+        action2 = '" ADD "'
+        action3 = '" INTEGER'
+        name0 = str(ventes+1)
+        name1 = "ventes" + name0
+        action4 = action1 + numerobis + action2 + name1 + action3
+        print(action4)
+        cursor.execute(action4)
+        connection.commit
+        return 1
+    else:
+        return 0
+        
+
+
+
 # change availability of a biere in table 15n
 # value: (int) 0=not available, 1=available
 # table: (int) 87
 # id: biere (int) id 
 # usefull in gestion carte
 def make_disponible_sur_carte(table, id, value):
+    numerobis = str(table)
+    data = []
+    data.append(value)
+    data.append(id)
+
+    action1 = 'UPDATE "'
+    action2 = '" SET disponible_sur_carte = ? WHERE id = ?'
+    action3 = action1 + numerobis + action2
+    cursor.execute(action3, data)
+    connection.commit()
+
     return 1
 
 
@@ -205,3 +311,8 @@ def new_biere(biere_data,active_15n):
 
 #nouvelle_15n(89, "kiki", "oui")
 #availability_id_15n_db(88)
+#make_disponible_sur_carte(90, 3, 1)
+#add_column_15n(88,1)
+#add_column_15n(88,0)
+dta = (45, 32, 12)
+add_stock(88, dta)
