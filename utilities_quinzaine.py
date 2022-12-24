@@ -37,7 +37,8 @@ def Init15nDB(numero):
 def nouvelle_15n(numero, Chef_15n, annee):
     Init15nDB(numero)
     add_to_quinzaine_list(numero, Chef_15n, annee)
-    #copy list of avalable bieres from older (numero-1) 15n 
+    #copy list of avalable bieres from older (numero-1) 15n
+    availability_id_15n_db(int(numero)) 
     switch_15n(numero)
     return 1
 
@@ -117,12 +118,12 @@ def initDB():
                     ''')
 
     connection.commit()
-    connection.close()
+    #connection.close()
 
     return 1
 
 #add data from csv_file to yable bieres in db
-def csv_db(csv_file):
+def csv_biere_db(csv_file):
     file = open(csv_file)
     raw = csv.reader(file)
     contents = []
@@ -139,3 +140,68 @@ def csv_db(csv_file):
     cursor.executemany(insert_records, contents)
     connection.commit()
     return 1
+
+# used to init db and add bieres id and availability in "table" 15n
+# usefull for tests
+def id_biere_to_15n_table(table):
+    data = []
+    num = str(table)
+    #data.append(('1', '1'))
+    #data.append(('2', '1'))
+    #data.append(('3', '1'))
+
+    for i in cursor.execute("SELECT id FROM bieres"):
+        tmp = []
+        for j in i:
+            if type(j) == int:
+                tmp.append(j)
+                tmp.append(1)
+        data.append(tmp)
+    #print(data)
+
+    action1 = 'INSERT INTO "'
+    action2 = '" (id, disponible_sur_carte) VALUES(?, ?)'
+    action3 = action1 + num + action2
+    cursor.executemany(action3, data)
+    connection.commit()
+    return 1
+
+
+#copy id and dispo_sur_carte from old (numero-1) 15n table to new 15n table
+# input: table = (int) 87, will add bieres id and availability into table "87" from table "86"
+# usefull when creating a new 15n table
+def availability_id_15n_db(table):
+    numerobis = str(table-1)
+    numero = str(table)
+    action1 = 'INSERT INTO "'
+    action2 = '" (id, disponible_sur_carte) SELECT id, disponible_sur_carte FROM "'
+    action5 = '"'
+    action3 = action1 + numero + action2 + numerobis + action5
+    #print(action3)
+
+    cursor.execute(action3)
+    connection.commit()
+
+    return 1
+
+# change availability of a biere in table 15n
+# value: (int) 0=not available, 1=available
+# table: (int) 87
+# id: biere (int) id 
+# usefull in gestion carte
+def make_disponible_sur_carte(table, id, value):
+    return 1
+
+
+# add new biere into table biere and into active 15n table and making it available in carte
+# biere_data: array
+# active 15n: (int) 87
+# usefull in gestion carte
+def new_biere(biere_data,active_15n):
+    #add biere to biere table
+    #copy id and add it into active 15n table
+    #make new biere available to carte (into active table 15n)
+    return 1
+
+#nouvelle_15n(89, "kiki", "oui")
+#availability_id_15n_db(88)

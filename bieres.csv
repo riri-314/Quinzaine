@@ -1,4 +1,4 @@
 id,nom,format,nombre_dans_contenant,type,degre,prix_vente,prix_achat,barecode
-0,Duvel,75,12,blonde,8.5,2.6,1.6,('&&§!&à&'àà(
-1,Satan Gold,33,24,blonde,8,2.4,1.8,('&é&àèààà'§§
-2,PMB,25,160,ambrée,12,1.8,0.8,"('""ààà&èà""&éé"
+1,Duvel,75,12,blonde,8.5,2.6,1.6,('&&§!&à&'àà(
+2,Satan Gold,33,24,blonde,8,2.4,1.8,('&é&àèààà'§§
+3,PMB,25,160,ambrée,12,1.8,0.8,"('""ààà&èà""&éé"
