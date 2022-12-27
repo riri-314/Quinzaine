@@ -15,7 +15,6 @@ Init15nDB(87) #add table "87" for the 87 éme 15n
 add_to_quinzaine_list(87, "CAP", "2022-2023") #add 87 éme 15n to the list to be tracked, and name+date
 id_biere_to_15n_table(87) #add data to table 87, add id biere and make them available
 add_column_15n(87, 0) #add stock column
-add_column_15n(87, 0) #add stock column
 id = get_bieres_id_from_15n(87)
 for i in range(len(id)):
     tmp = []
@@ -24,7 +23,7 @@ for i in range(len(id)):
     data.append(tmp)
 #print("Data before stock")
 #print(data)
-add_stock(87, data)
+add_stock(87, data) # add stock from data to the last stock column in 87
 add_column_15n(87, 1) #add ventes column
 
 

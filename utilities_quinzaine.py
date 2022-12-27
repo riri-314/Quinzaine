@@ -172,7 +172,7 @@ def id_biere_to_15n_table(table):
     connection.commit()
     return 1
 
-    
+
 # return list of id from 15n table
 def get_bieres_id_from_15n(table):
     numerobis = str(table)
@@ -343,6 +343,22 @@ def make_disponible_sur_carte(table, id, value):
 
     return 1
 
+# make a csv with the latest stock, bire id, biere name, biere format from 15n table
+def make_csv_from_15n_table(table):
+    # select id and stock from 15n table where available = 1
+    # select biere name, biere format from biere table where id = id
+    # output in a csv 
+    return 1
+
+def verifie_stock_csv(csv):
+    # verifie that id, name verifie what od on the biere table
+    # verifie data are all int and not négatif
+    return 1
+
+def add_ctock_from_csv(table,csv):
+    #verifie_stock_csv(csv)
+    #add_stock(table,csv)
+    return 1
 
 # add new biere into table biere and into active 15n table and making it available in carte
 # biere_data: array
