@@ -38,7 +38,12 @@ def nouvelle_15n(numero, Chef_15n, annee):
     Init15nDB(numero)
     add_to_quinzaine_list(numero, Chef_15n, annee)
     #copy list of avalable bieres from older (numero-1) 15n
-    availability_id_15n_db(int(numero)) 
+    availability_id_15n_db(int(numero))
+    # creat new stock column
+    add_column_15n(numero,0) 
+    # add stock from old 15n
+    add_old_stock(numero) 
+    # make 15n numero active
     switch_15n(numero)
     return 1
 
@@ -132,7 +137,7 @@ def csv_biere_db(csv_file):
     for x in raw:
         if (i != 0):
             contents.append(x[1:])
-            print(x[1:])
+            #print(x[1:])
         i += 1
 
     insert_records = "INSERT INTO bieres (nom, format, nombre_dans_contenant, type, degre, prix_vente, prix_achat, barecode) VALUES(?, ?, ?, ?, ?, ?, ?, ?)"
@@ -142,6 +147,7 @@ def csv_biere_db(csv_file):
     return 1
 
 # used to init db and add bieres id and availability in "table" 15n
+# return number of biere id 
 # usefull for tests
 def id_biere_to_15n_table(table):
     data = []
@@ -166,22 +172,14 @@ def id_biere_to_15n_table(table):
     connection.commit()
     return 1
 
-#usefull for tests
-#add random stock in the last stock column
-def add_stock(table, data):
-    d = 0
-    stock = 0
-    id = [] #list of id
-    out = []
-    #long = 0 #number of id in table
     
+# return list of id from 15n table
+def get_bieres_id_from_15n(table):
     numerobis = str(table)
-    action1 = 'SELECT * FROM "'
-    action2 = '"'
+    id = [] #list of id
     action4 = 'SELECT id FROM "'
+    action2 = '"'
     action5 = action4 + numerobis + action2
-    action3 = action1 + numerobis + action2
-
     #get list of id in 15n table
     for i in cursor.execute(action5):
         tmp = []
@@ -189,6 +187,20 @@ def add_stock(table, data):
             if type(j) == int:
                 tmp.append(j)
         id.append(tmp)
+    return id
+
+
+#add random stock in the last stock column
+# usefull for tests, gestion stock and gestion 15n
+# input: data((id0,stock_value0),(id1, stock_value1),..)
+def add_stock(table, data):
+    d = 0
+    stock = 0
+    
+    numerobis = str(table)
+    action1 = 'SELECT * FROM "'
+    action2 = '"'
+    action3 = action1 + numerobis + action2
 
     cursor.execute(action3)
     
@@ -199,22 +211,55 @@ def add_stock(table, data):
         d += 1
 
     stock_name = cursor.description[stock][0]
-    #print(stock_name)
-    print(id)
-    for x in range(len(id)):
-        tmp = []
-        tmp.append(data[x])
-        tmp.append(id[x][0])
-        out.append(tmp)
-    print(out)
-    #data = ([stock4, 1],[stock4, 2],[stock4, 3])
+
     action6 = 'UPDATE "' 
     action7 = '" SET "' 
     action9 = '" = ? WHERE id = ?'
     action8 = action6 + numerobis + action7 + stock_name + action9
-    cursor.executemany(action8, out)
+    cursor.executemany(action8, data)
     connection.commit()
     return 1
+
+# add last stock from last 15n into new 15n
+# input: table = (int) 87, new table
+# usefull when creating a new 15n table
+def add_old_stock(table):
+    numerobis = str(table)
+    numerominus = str(table-1)
+    d = 0
+    data = []
+
+    action1 = 'SELECT * FROM "'
+    action2 = '"'
+    action3 = action1 + numerominus + action2
+
+    test = cursor.execute(action3)
+
+    #get last stock column to add stock
+    for x in cursor.description:
+        if x[0][0] == "s":
+            stock = d
+        d += 1
+
+    stock_name = cursor.description[stock][0]
+
+    action4 = 'SELECT "' 
+    action5 = '", id FROM "'
+    action6 = '"'
+    action7 = action4 + stock_name + action5 + numerominus + action6
+
+
+    for i in cursor.execute(action7):
+   
+        data.append(i)
+    
+    add_stock(table, data)
+
+    return 1
+
+
+
+
 
 #copy id and dispo_sur_carte from old (numero-1) 15n table to new 15n table
 # input: table = (int) 87, will add bieres id and availability into table "87" from table "86"
@@ -249,7 +294,7 @@ def add_column_15n(table, type):
             ventes += 1
         elif x[0][0] == "s":
             stock += 1
-        print((x[0]))
+        #print((x[0]))
     if type == 0:
         action1 = 'ALTER TABLE "' 
         action2 = '" ADD "'
@@ -257,7 +302,7 @@ def add_column_15n(table, type):
         name0 = str(stock+1)
         name1 = "stock" + name0
         action4 = action1 + numerobis + action2 + name1 + action3
-        print(action4)
+        #print(action4)
         cursor.execute(action4)
         connection.commit
         return 1
@@ -269,7 +314,7 @@ def add_column_15n(table, type):
         name0 = str(ventes+1)
         name1 = "ventes" + name0
         action4 = action1 + numerobis + action2 + name1 + action3
-        print(action4)
+        #print(action4)
         cursor.execute(action4)
         connection.commit
         return 1
@@ -314,5 +359,6 @@ def new_biere(biere_data,active_15n):
 #make_disponible_sur_carte(90, 3, 1)
 #add_column_15n(88,1)
 #add_column_15n(88,0)
-dta = (45, 32, 12)
-add_stock(88, dta)
+#dta = (45, 32, 12)
+#add_stock(88, dta)
+#add_old_stock(88)
