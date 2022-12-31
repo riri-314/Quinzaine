@@ -11,11 +11,11 @@
 - [ ] Upload csv in Gestion stock
 - [ ] Test csv
 - [ ] Update stock
-- [ ] View stock
+- [x] View stock
 
 ### Gestion carte
 - [ ] Add new item to db and carte
-- [ ] Remove item from carte
+- [x] Remove item from carte
 - [ ] Edit beer info
 
 ### Scanner
