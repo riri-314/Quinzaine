@@ -1,4 +1,293 @@
-id,nom,format,nombre_dans_contenant,type,degre,prix_vente,prix_achat,barecode
-1,Duvel,75,12,blonde,8.5,2.6,1.6,('&&§!&à&'àà(
-2,Satan Gold,33,24,blonde,8,2.4,1.8,('&é&àèààà'§§
-3,PMB,25,160,ambrée,12,1.8,0.8,"('""ààà&èà""&éé"
+id,nom,format,nombre_dans_fromat,type,degre,prix_vente,prix_achat,barecode
+1,Abbaye bonne esperance,75,24,Blonde,6,5,5,"('&&!èç&&""àèè"
+2,Abbaye val dieu fruitee,33,24,Fruitée,9,2,2,"('&""çèèàà&&é§"
+3,Abbaye-bonne espérance,33,24,Blonde,6,2,2,"('&&!èç&&""à""ç"
+4,Abeille,33,24,Blonde,8,2,2,"('""ààààà!""(§à"
+5,Achel blonde,33,24,Trappiste,8,2,2,('é(ààè§(!!é!
+6,Affligem triple,30,24,Blonde,9,2,2,"('&àé§""çé(è("""
+7,Amer Amer,33,24,Blonde,6,2,2,"('&""ç§""&!àà&ç"
+8,Ardenne Rouge ,33,24,Fruitée,7,2,2,('é(àéè&éà§(è
+9,Atrium Avalanche ,33,24,Fruitée,7,2,2,"('""ààà&èà""àé"""
+10,Babylone,33,24,Blonde,7,2,2,"('&&é!""àààà§é"
+11,Bacch,37,24,Brune,4,2,2,"('&&à!&àà'è""§"
+12,Barbar,33,24,Blonde,8,2,2,('&&§è§&àà!&é
+13,Barbar Bok,33,24,Brune,8,2,2,"('&&§è§""à&""""é"
+14,Barbar Rouge,33,24,Fruitée,8,2,2,('&&§è§&àà!§è
+15,Barbe d'or,33,24,Blonde,8,2,2,"('&&""§'&(&'àç"
+16,Barbe noire,33,24,Brune,9,2,2,"('&&""§'&(&'§&"
+17,Bastogne Pale Ale,33,24,Blonde,6,2,2,
+18,Bastogne Pale Ale,75,24,Blonde,6,6,6,('é(àéè&éà&çà
+19,Beer Lambert,33,24,Nouveauté,8,2,2,('&çç!àé(&èà&
+20,Bersalis triple,33,24,Blonde,10,2,2,('é(à&!àèààà!
+21,Bertinchamps blonde,50,24,Blonde,6,3,3,"('é(à""""é'àà&&"
+22,Bertinchamps brune,50,24,Brune,7,3,3,"('é(à""""é'àà""("
+23,Bertinchamps légère,33,24,Blonde,5,2,2,"('é(à""""é'çç!'"
+24,Bertinchamps pamplemousse Fût,25,200,Fruitée,5,1,1,"&é""'(§è!çà""à"
+25,Bertinchamps triple Fût,25,200,Blonde,8,1,1,"&é""'(§è!çàé"""
+26,Betchard blonde,33,24,Blonde,6,2,2,"('""àààéè""!à&è"
+27,Big nose,33,24,Blonde,9,2,2,"('""àààà§(!àéè"
+28,Binchoise blonde,75,24,Blonde,6,5,5,"('&&!èç&é""'(!"
+29,Binchoise brune,75,24,Brune,8,5,5,"('&&!èç""'(§è§"
+30,Binchoise Brune,33,24,Brune,8,2,2,('&&!èç'(§è!(
+31,Binchoise des ours,75,24,Blonde,8,5,5,('&&!èç(§è!ç'
+32,Binchoise des ours,33,24,Blonde,8,2,2,('&&!èçè!ç&é!
+33,Bisou M'Chou,75,24,Blonde,6,6,6,('&&!èçéç&çà'
+34,Black 14,33,24,Brune,14,3,3,('é(àà&!(àà!é
+35,Black Mamba,33,24,Brune,4,2,2,('é(à&àè!àé!!
+36,Blanche de Bruxelles,33,24,Blanche,4,1,1,('&&§è§!à&àè!
+37,Blanche de Bruxelles rosée,25,24,Fruitée,4,1,1,('&&§è§!çàà(!
+38,Blanche de Namur,25,24,Blanche,4,1,1,"('&&§""""é(àà(("
+39,Blanche de Namur,75,24,Blanche,4,4,4,"('&&§""""è(àà(à"
+40,Blanche de Namur pomme,25,24,Fruitée,3,1,1,"('&&§""""é(&àé&"
+41,Blonde du pays noir,33,24,Blonde,7,2,2,"('é(à""ç&&à&èé"
+42,Bon secours ambrée,33,24,Ambrée,8,2,2,"('&éç!""&(ààé§"
+43,Bon secours blonde,33,24,Blonde,8,2,2,"('&éç!""&""ààé!"
+44,Bon secours myrtille,33,24,Fruitée,7,2,2,"&é""'(§è!çà&!"
+45,Bourgogne des flandres Fût,25,200,Brune,5,1,1,"&é""'(§è!çàéè"
+46,Brugse  zot blonde,33,24,Blonde,6,2,2,"('é(à&èé'àà&"""
+47,Bruxellensis,33,24,Ambrée,6,2,2,('é(àéçàéà&ç&
+48,Bush 10,33,24,Blonde,10,2,2,"('&&((&""&à!&è"
+49,Bush 12 Fût,25,200,Ambrée,12,1,1,"&é""'(§è!çàéé"
+50,Bush 12,75,24,Ambrée,12,6,6,"('&&((&é§àèé"""
+51,Caracole,33,24,Ambrée,8,2,2,('é(ààà('àééç
+52,Carolus ambrio,33,24,Ambrée,8,2,2,('é(àà§é'àà((
+53,Carolus classic,33,24,Brune,8,2,2,('é(àà§é'àà&è
+54,Carolus triple d'or,33,24,Blonde,9,2,2,('é(àà§é'ààé'
+55,Charles Quint blonde dorée,33,24,Blonde,8,2,2,('à!(&è§
+56,Charles Quint ommegang,33,24,Blonde,8,2,2,"('&""!éè!"
+57,Charles Quint rouge rubis,33,24,Brune,8,2,2,('à!(à§à
+58,Chatte (la),33,24,Blonde,6,2,2,"('""ààààé&&àé'"
+59,Chatte (la),75,24,Blonde,6,6,6,"('""ààààé&&à&è"
+60,Chatte noire (la),33,24,Brune,8,2,2,"('""ààààé&&é""ç"
+61,Chimay 150,33,24,Trappiste,10,2,2,('&àçà!&àà&&!
+62,Chimay blanche,33,24,Trappiste,8,2,2,('&àçà!ààààéç
+63,Chimay bleue,33,24,Trappiste,9,2,2,"('&àçà!àààà""§"
+64,Chimay Cinq Cents(gde blanc),75,24,Trappiste,8,5,5,"('&àçà!ààà&""("
+65,Chimay dorée,33,24,Trappiste,5,2,2,('&àçà!ààà&é!
+66,Chimay grande reserve (bleue),75,24,Trappiste,9,6,6,('&àçà!ààààè'
+67,Chimay première (rouge),75,24,Trappiste,7,5,5,"('&àçà!àààà'"""
+68,Chimay rouge,33,24,Trappiste,9,2,2,('&àçà!àààà&é
+69,Chouffe,75,24,Blonde,8,5,5,('&àè§ç&àààç!
+70,Chouffe,33,24,Blonde,8,2,2,('&àè§ç&ààà!&
+71,Chouffe blanche,33,24,Blanche,6,2,2,('&àè§ç!àà!éà
+72,Chouffe houblon triple,33,24,Blonde,9,2,2,"('&àè§ç""ààà!("
+73,Ciney blonde,25,24,Blonde,7,2,2,"('à((""&("
+74,Ciney brune,25,24,Brune,7,2,2,"('à((""à!"
+75,Cinq cense,33,24,Ambrée,8,2,2,"('é(àééè!ààé"""
+76,Corne du bois des pendus 10,33,24,Blonde,10,2,2,('é(àé§§&àà&é
+77,Corne du bois des pendus 6,33,24,Blonde,6,2,2,('é(àé§§&ààà(
+78,Corne du bois des pendus black,33,24,Brune,8,2,2,('é(àé§§&à&çè
+79,Curieuse neus,33,24,Blonde,8,2,2,"('""ààà&""!(à&'"
+80,Curti,37,24,Blonde,7,2,2,"('é(à""&ç(àà&&"
+81,Cuvée des trolls,25,24,Blonde,7,1,1,('&&((&&'&àç&
+82,Cuvée ds trolls triple,75,24,Blonde,8,6,6,"('&&((&é&à(&"""
+83,Dame bibiche,33,24,Blonde,7,2,2,"('""àààà&ààà&'"
+84,Delirium argentum,33,24,Ambrée,7,2,2,"('&é&!§àà""(ç'"
+85,Delirium nocturnum,33,24,Brune,8,2,2,('&é&!§àààè&(
+86,Delirium red,75,24,Fruitée,8,6,6,"('&é&!§àà""'ç("
+87,Delirium red Fût,25,200,Fruitée,8,1,1,"&é""'(§è!çàéà"
+88,Delirium tremens,75,24,Blonde,8,6,6,"('&é&!§àààà'"""
+89,Delirium Tremens Fût,25,200,Blonde,8,1,1,"&é""'(§è!çàé&"
+90,Delta IPA,33,24,Blonde,6,2,2,"('&&é!""àààà&è"
+91,Diôle,75,24,Blonde,6,5,5,"('é(à""""à'àéç&"
+92,Divine (la),33,24,Ambrée,8,2,2,"('&""àé""àà&àà&"
+93,Duchesse de bourgogne,25,24,Brune,6,2,2,"('&&""§'&(&&&ç"
+94,Dupont les bons v,37,24,Blonde,10,2,2,('&àèàéààààéè
+95,Duvel,33,24,Blonde,8,2,2,('&&§!&à&'àà(
+96,Duvel 666,33,24,Blonde,7,2,2,('&&§!&'à!ààé
+97,Duvel triple hop,33,24,Blonde,10,2,2,('&&§!&'à&&§'
+98,Elfique ambrée,33,24,Ambrée,8,2,2,('é(àéççéà&'ç
+99,Embuscade,33,24,Fruitée,6,2,2,"('&&!èç(&""é""("
+100,Ename blonde,33,24,Blonde,6,2,2,"('&é(!""é'à""§"""
+101,Epervier,33,24,Nouveauté,7,2,2,"&é""'(§è!çà&!"
+102,Esprit triple,33,24,Blonde,8,2,2,"('é(à""""'çààèé"
+103,Fagnes blonde,75,24,Blonde,8,5,5,"('é(à""é'(&è&("
+104,Fagnes blonde,33,24,Blonde,8,2,2,"('é(à""é'(&""&ç"
+105,Fagnes blood orange,33,24,Fruitée,7,2,2,"('é(à""é'(('&§"
+106,Filou,33,24,Blonde,8,2,2,('&&à!&àà§é&&
+107,Floreffe blonde,33,24,Blonde,6,2,2,"('&&éè§éàà""é("
+108,Floreffe prima melior,33,24,Brune,8,2,2,"('&&éè§""àà(&"""
+109,Floreffe triple,33,24,Blonde,8,2,2,('&&éè§éàà(&§
+110,Floris apple,33,24,Fruitée,3,2,2,('&é&!§àà&àç(
+111,Floris honey,33,24,Fruitée,4,2,2,('&é&!§ààà(&è
+112,Floris mangue ,33,24,Fruitée,5,2,2,"('&é&!§àà&!è"""
+113,Floris passion,33,24,Fruitée,4,2,2,('&é&!§àààéèé
+114,Forgeronne,33,24,Ambrée,6,2,2,"('""àààéè""!àé'"
+115,Frambush,33,24,Nouveauté,8,2,2,"('&&((&""ààç&è"
+116,Fruit défendu,33,24,Brune,8,2,2,('&àéé!&'&ç'(
+117,Fumette (la),33,24,Ambrée,6,2,2,"('é(à&'ç§àà""è"
+118,Gauloise ambrée,33,24,Ambrée,6,2,2,"('&&§""""""""éà&à"
+119,Gauloise blonde,75,24,Blonde,6,4,4,"('&&§""""è(&à&ç"
+120,Gauloise blonde,33,24,Blonde,6,2,2,"('&&§""""""""&à&"""
+121,Gauloise fruits rouges,33,24,Fruitée,8,2,2,"('&&§""""&&ààé&"
+122,Goliath,75,24,Blonde,9,6,6,"('é(àà(§§à("""""
+123,Goliath,33,24,Blonde,9,2,2,('é(àà(§§à(àé
+124,Gouyasse,33,24,Blonde,6,2,2,('é(àà(§§à&à§
+125,Grimbergen blonde,33,24,Blonde,7,2,2,"('&àé§""à&(§§ç"
+126,Grimbergen double,33,24,Brune,6,2,2,"('&àé§""à&à§§'"
+127,Grimbergen triple,33,24,Blonde,9,2,2,"('&àé§""à&&§§&"
+128,Grisette fruits des bois,25,24,Fruitée,4,1,1,"('&é&""!èà(à&ç"
+129,Grosse Bertha,33,24,Blonde,7,2,2,"('&&é!""àààà'!"
+130,Guillotine (la),33,24,Blonde,9,2,2,"('&é&!§ààà&""("
+131,Gulden Draak,33,24,Brune,11,2,2,"('&&§§""ààéè&§"
+132,Gulden Draak,75,24,Brune,11,6,6,"('&&§§""ààéèé"""
+133,Gulden Draak 9000,33,24,Ambrée,10,2,2,"('&&§§""ààé!'§"
+134,Harmony,33,24,Blonde,6,1,1,"('é(àà(§§à""é!"
+135,Hopus,33,24,Blonde,8,2,2,('&&§è§èàààà(
+136,Houppe,33,24,Blonde,8,2,2,"('é(à""(è§àà'"""
+137,Houppe,75,24,Blonde,8,6,6,"('é(à""(è§àà&é"
+138,Houppe Jambe en l'air,33,24,Blonde,5,2,2,"('é(à""(è§ààç!"
+139,Jambe de bois,33,24,Blonde,8,2,2,"('é(àéçàéàà""à"
+140,Judas,33,24,Blonde,8,2,2,('à((à'ç
+141,Julius,33,24,Blonde,8,2,2,"('&àéé!&'&ç""!"
+142,Jungle Joy,33,24,Ambrée,7,2,2,"('&&é!""àààé'§"
+143,Kasteel blonde,33,24,Blonde,7,1,1,"('&&à!&àà""§""à"
+144,Kasteel donker,33,24,Brune,11,2,2,"('&&à!&ààà(é"""
+145,Kasteel red Fût,25,200,Fruitée,8,1,1,"&é""'(§è!çàé("
+146,Kasteel triple,33,24,Blonde,11,2,2,('&&à!&ààà§èè
+147,Kerel Grapefruit,33,24,Blonde,4,2,2,('àèàà'àç'à&'
+148,Kerel Kaishaku,33,24,Blonde,15,3,3,('àèàà'àçèà&(
+149,Kerel Saison,33,24,Blonde,6,2,2,('àèàà'àçàà&§
+150,Kwak,33,24,Ambrée,8,2,2,('à(àà(&
+151,La triple plaisir,33,24,Blonde,8,2,2,è§''§àè&('èè
+152,La vraie bière,33,24,Blonde,6,2,2,è'(&è!ç&ç&(ç
+153,Leffe blonde,33,24,Blonde,7,2,2,('&àéé!&'éé&!
+154,Leffe ruby,33,24,Fruitée,5,2,2,"('&àéé!éà""!""'"
+155,Leopold 7 triple de hesbaye,33,24,Blonde,8,2,2,"('é(à""éè""ààà&"
+156,Li crochon blonde,33,24,Blonde,7,1,1,"('&&§""""ççé(&&"
+157,Li crochon brune,33,24,Brune,9,2,2,"('&&§""""ççé(à'"
+158,Licrochon blonde,75,24,Blonde,7,5,5,"('&&§""""ççè(àç"
+159,Licrochon brune,75,24,Brune,9,6,6,"('&&§""""ççè(àç"
+160,Liefmans fruitesse kriek,25,24,Fruitée,4,1,1,('&&§!§èàà&&!
+161,L'impératrice,33,24,Blonde,9,2,2,('&çç!àà&!èàà
+162,Lindemans apple,25,24,Fruitée,4,1,1,"('&&éé""à""àà""§"
+163,Lindemans cassis,25,24,Fruitée,4,1,1,"('&&éé""à""ààç!"
+164,Lindemans faro,25,24,Ambrée,4,1,1,"('&&éé""à""àà§è"
+165,Lindemans framboise,25,24,Fruitée,2,1,1,"('&&éé""à""ààéç"
+166,Lindemans gueuze,25,24,Ambrée,4,1,1,"('&&éé""à""àà(à"
+167,Lindemans pêcheresse,75,24,Fruitée,2,6,6,"('&&éé""&àà!è§"
+168,Lindemans pêcheresse,25,24,Fruitée,2,1,1,"('&&éé""à""àà'"""
+169,Lupulus blonde,75,24,Blonde,8,5,5,('é(àé(&éàà&è
+170,Lupulus blonde Fût,25,200,Blonde,8,1,1,"&é""'(§è!çà&"""
+171,Lupulus brune,75,24,Brune,8,5,5,('é(àé(&éààé'
+172,Lupulus fructus,25,200,Fruitée,4,1,1,('é(àé(&éééàé
+173,Lupulus Hibernatus,75,24,Brune,9,5,5,('é(àé(&éàà((
+174,Lupulus hopéra,33,24,Blonde,6,2,2,('é(àé(&ééà&&
+175,lupulus organicus,33,24,Blonde,8,2,2,"('é(àé(&ééàè"""
+176,Lupulus Organicus,75,24,Blonde,8,5,5,('é(àé(&é§ààé
+177,Malheur 10,33,24,Blonde,10,2,2,"('&""çèàéààà&'"
+178,Malheur 12,33,24,Brune,12,2,2,"('&""çèà&'à""ç§"
+179,Maredsous 10,75,24,Ambrée,10,6,6,"('&&§!&à""!à(§"
+180,Maredsous 10,33,24,Ambrée,10,2,2,"('&&§!&à""!àà&"
+181,Maredsous 6,33,24,Blonde,6,2,2,"('&&§!&à""(ààà"
+182,Maredsous 8,33,24,Brune,10,2,2,"('&&§!&à""èàà'"
+183,Marteau,33,24,Nouveauté,8,3,3,"&é""'(§è!çààç"
+184,Martins IPA,33,24,Blonde,7,2,2,('&àé&!ààé(&(
+185,Mc Chouffe,33,24,Brune,8,2,2,('&àè§çéààà!!
+186,Mirakel,75,24,Blonde,6,5,5,"('&""ç§""&§ààé!"
+187,Moinette blonde,33,24,Blonde,8,2,2,"('&àèàéààà&"""""
+188,Moinette brune,33,24,Brune,8,2,2,"('&àèàéàààé""é"
+189,Mongozo banane,33,24,Fruitée,4,2,2,!è&(§à!ààààé(
+190,Mongozo coconut,33,24,Fruitée,4,2,2,!è&(§à!éééààè
+191,Mongozo mango,33,24,Fruitée,4,2,2,!è&(§à!ééé(àé
+192,Mystic cerise,25,24,Fruitée,4,1,1,"('&""!éàç"
+193,Newton,33,24,Fruitée,4,2,2,"('&&§è§""àé&!§"
+194,Noire du midi,33,24,Brune,7,2,2,"&é""'(§è!çà&("
+195,Nostradamus,33,24,Brune,10,2,2,"('é(ààà('àé'"""
+196,Omer,33,24,Blonde,8,2,2,('&&!(!ààà&'(
+197,Orval,33,24,Trappiste,6,3,3,('à'àà&'
+198,Papegaie,33,24,Brune,8,2,2,"&é""'(§è!çà&§"
+199,Pêche Mel Bush Fût,25,200,Fruitée,8,1,1,"&é""'(§è!çàé'"
+200,trus triple d'or,25,24,Blonde,8,2,2,"!è(é&""àààà""è"
+201,Philomène céleste,33,24,Blonde,8,2,2,"('àèàà""§&(àà("
+202,Philomène florale,33,24,Blonde,9,2,2,"('àèàà""§&&ààè"
+203,Philomène florale,75,24,Blonde,6,2,6,"('àèàà""§&&&à§"
+204,Philomène hoptimale,33,24,Ambrée,6,6,2,"('àèàà""§&éàà'"
+205,Philomène hoptimale,75,24,Ambrée,7,2,6,"('àèàà""§&é&à"""
+206,Piraat,33,24,Ambrée,7,6,2,"('&&§§""ààé§àà"
+207,Polarius,33,24,Blonde,10,2,2,"('é(à""ç&&àà'é"
+208,Quatre saison (IV saison),33,24,Blonde,5,2,2,('é(àééè!àéàè
+209,Queue de charrue ambrée,33,24,Ambrée,6,2,2,"('&&§""""é&""""àé"
+210,Queue de charrue brune,33,24,Brune,6,2,2,"('&&""§'&(&''è"
+211,Queue de charrue rouge,33,24,Fruitée,5,2,2,"('&&§""""&""à&à'"
+212,Queue de charrue triple,33,24,Blonde,9,2,2,"('&é(!""ààè(à!"
+213,Queue de charrue triple,75,24,Blonde,7,2,5,"('&é(!""ààè(""ç"
+214,Quintine ambrée,33,24,Ambrée,7,5,2,('é(àà(§§àèàà
+215,Quintine bio,33,24,Blonde,8,2,2,('é(àà(§§àç&(
+216,Quintine blonde,33,24,Blonde,6,2,2,('é(àà(§§à§à&
+217,Rasta trolls,33,24,Blonde,8,2,2,('&&((&&è&àè'
+218,Rendez vous,33,24,Blonde,7,2,2,('é(àà§é''!((
+219,Rochefort 10,33,24,Trappiste,5,2,2,('&é!(!ààà&à'
+220,Rochefort 6,33,24,Trappiste,11,2,2,('&é!(!àààà§è
+221,Rochefort 8,33,24,Trappiste,8,2,2,('&é!(!àààà!&
+222,Rochefort triple extra ,33,24,Trappiste,9,2,2,"('&é!(!ààà""(è"
+223,Rochehaut blonde triple ,33,24,Blonde,8,2,2,"('""ààà&!""'ààà"
+224,Rochehaut IPA,33,24,Blonde,8,2,2,"('""ààà&!""'àç"""
+225,Rodenbach,33,24,Fruitée,7,2,2,('&é(àà&
+226,Rulles blonde,75,24,Blonde,5,2,5,('é(àà((&àà&é
+227,Rulles brune,75,24,Brune,7,5,5,"('é(àà((&àà'"""
+228,Rulles estivale,75,24,Blonde,6,5,5,('é(àà((&ààéç
+229,Rulles triple,75,24,Blonde,5,5,5,('é(àà((&àà§è
+230,Saint Bernardus Abr 12,33,24,Brune,8,5,2,('àèçàé&
+231,Saint Bernardus Prior 8,33,24,Brune,10,2,2,('àèçà&'
+232,Saint feuillien blonde,33,24,Blonde,8,2,2,"('&é&""!&à""""&à"
+233,Saint feuillien brune,33,24,Brune,8,2,2,"('&é&""!éà""""&è"
+234,Saint feuillien triple,33,24,Blonde,8,2,2,"('&é&""!'à""""&&"
+235,Saint Hubertus Ambrée Fût,25,200,Ambrée,8,2,1,"&é""'(§è!çàéç"
+236,Saint Hubertus Blanche Fût,25,200,Blanche,7,1,1,"&é""'(§è!çàé!"
+237,Saint Hubertus Triple,33,24,Blonde,5,1,2,"('&""ç!é§à&ààè"
+238,Saint Idesbald blonde,33,24,Blonde,7,2,2,('&é&!§àààéç§
+239,Saint Idesbald triple,33,24,Blonde,6,2,2,('&é&!§àà&àé§
+240,Saint Monon au miel,33,24,Ambrée,9,2,2,('é(ààè!(àà'!
+241,Saison 1858,33,24,Blonde,6,2,2,"('&&§""""""""àà""à"
+242,Saison Dupont,33,24,Blonde,6,2,2,"('&àèàéààà""""&"
+243,Saison Dupont,75,24,Blonde,6,2,4,"('&àèàéààà""&è"
+244,Sans grade,33,24,Blonde,6,4,2,
+245,Sarazen bio,33,24,Blonde,6,2,2,('é(àéèààààèé
+246,Satan gold,33,24,Blonde,6,2,2,('&é&àèààà'§§
+247,Satan red,33,24,Brune,8,2,2,"('&é&àèààà""ç!"
+248,Saxo,33,24,Blonde,8,2,2,('é(ààà('àé(à
+249,Silly Scotch,33,24,Brune,8,2,2,"('&""àé""àààé§'"
+250,Six Wheat (VI),33,24,Blonde,8,2,2,('é(àééè!àà('
+251,St hubertus triple hop citra,33,24,Nouveauté,6,2,2,"('&""ç!é§à'àà!"
+252,Station 16 saison,33,24,Nouveauté,8,2,2,"('""àààé!""çàà'"
+253,Straffe Hendrik quadrupel,33,24,Brune,5,2,2,('é(à&èé'à§'!
+254,Straffe Hendrik triple,33,24,Blonde,11,2,2,('é(à&èé'à'(è
+255,Super fresca,33,24,Blonde,9,2,2,"('&""ç§""&àà'&"""
+256,Sweet alma,33,24,Blonde,6,2,2,"('&""ç§""&ààç&!"
+257,Taras Boulba,33,24,Blonde,8,2,2,('é(àéçàéàà&§
+258,Tête de mort Fût,25,200,Blonde,4,2,1,
+259,Timmermans framboise,25,24,Fruitée,8,1,2,('&&(&§à&àèàè
+260,Timmermans pêche,25,24,Fruitée,4,2,2,('&&(&§à&àçà(
+261,To touille ,33,24,Blonde,4,2,2,"('""ààà&èà""&éé"
+262,Tongerlo blonde lux,33,24,Blonde,9,2,2,('à!(&çà
+263,Tongerlo brune nox,33,24,Brune,6,2,2,('à!(à&(
+264,Tongerlo prior,33,24,Blonde,7,2,2,('à!(àéé
+265,Tournay blonde,75,24,Blonde,9,2,6,('é(àéà!(ààé(
+266,Tournay blonde,33,24,Blonde,7,6,2,('é(àéà!(àà&!
+267,Tripick blonde,33,24,Blonde,7,2,2,('é(àé(&é((àà
+268,Triple Galipette,33,24,Blonde,8,2,2,"('""àààà'§&à&§"
+269,Triple Karmeliet,75,24,Blonde,9,2,6,"('&à§ç""&àà(("""
+270,Triple moine,33,24,Blonde,8,6,2,"('&&§""""""""ààé"""
+271,Triple Moine,75,24,Blonde,7,2,5,"('&&§""""è(ààéç"
+272,Troubadour magma,33,24,Ambrée,7,5,2,"('é(àà§èàà&""ç"
+273,Troubadour obscura,33,24,Brune,9,2,2,('é(àà§èààà('
+274,Val Dieu blonde,33,24,Blonde,8,2,2,"('&""çèèàààà&"""
+275,Val Dieu brune,33,24,Brune,6,2,2,"('&""çèèààààéà"
+276,Val Dieu grand cru,33,24,Brune,8,2,2,"('&""çèèàààèé"""
+277,Val Dieu grand cru,75,24,Brune,10,2,6,"('&""çèèàààéè"""
+278,Val Dieu triple,33,24,Blonde,10,6,2,"('&""çèèàààà""è"
+279,Valduc Thor,33,24,Brune,9,2,2,"('""ààà&çç!àé"""
+280,Waterloo dark,33,24,Brune,10,2,2,('&àé&!àà'éè'
+281,Waterloo triple,33,24,Blonde,8,2,2,('&àé&!àà'&çç
+282,Westmalle double,33,24,Trappiste,8,2,2,"('&é""'""éà&""""è"
+283,Westmalle triple,33,24,Trappiste,7,2,2,"('&é""'""&(é""""é"
+284,Westmalle triple,75,24,Trappiste,10,2,6,"('&é""'""àà&ééè"
+285,Whack,33,24,Brune,10,6,2,"&é""'(§è!çà&è"
+286,Wister-Z,33,24,Nouveauté,9,2,2,('&çç!àéàé'à§
+287,Wittekerke rosée,25,24,Fruitée,6,2,1,"('&&!""&ààà(éà"
+288,Wood stout,33,24,Brune,4,1,3,('é(àéè&éà§è&
+289,Wunder Lager,33,24,Blonde,8,3,1,"('&&é!""ààà""""!"
+290,xx-Bitter,33,24,Blonde,4,1,2,"('&""ç§""""ààà&&"
+291,Zinnebir,33,24,Blonde,6,2,2,"('é(àéçàéààé"""
+292,Tête de mort red ,33,24,Blonde,6,2,2,"('&&§""""&çààè!"

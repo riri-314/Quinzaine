@@ -1,6 +1,7 @@
 #python file with all the function related to operation on tables 15n and 15n_list
 import sqlite3
 import csv
+import random
 
 connection = sqlite3.connect('quinzaine.db', check_same_thread=False)
 cursor = connection.cursor()
@@ -14,6 +15,17 @@ def get15n_id():
                 tmp.append(j)
         quinzaineId.append(tmp[0])
     return quinzaineId
+
+# return numero of the active 15n
+def get_active_15n():
+    out = []
+    action1 = "SELECT id_quinzaine FROM quinzaine_list WHERE actif = 1"
+    data = cursor.execute(action1)
+    connection.commit()
+    
+    for x in data:
+        out.append(x)
+    return out[0][0]
 
 #This function creat a table for a new 15n and take as imput the number of the 15n
 #Lines "stock" and lines "ventes" are created each day (for "ventes") or each time we incert a new stock (for "stock") 
@@ -35,6 +47,10 @@ def Init15nDB(numero):
  #Chef_15n = chef 15n of the new 15n ex:cap48
  #annee = year of the new 15n ex:2022-2023
 def nouvelle_15n(numero, Chef_15n, annee):
+    # test if 15n numero exist, if exist return 0
+    if (get15n_id().count(int(numero)) != 0):
+        print("refused to creat 15n because already exist")
+        return 0
     Init15nDB(numero)
     add_to_quinzaine_list(numero, Chef_15n, annee)
     #copy list of avalable bieres from older (numero-1) 15n
@@ -42,7 +58,9 @@ def nouvelle_15n(numero, Chef_15n, annee):
     # creat new stock column
     add_column_15n(numero,0) 
     # add stock from old 15n
+     
     add_old_stock(numero) 
+        
     # make 15n numero active
     switch_15n(numero)
     return 1
@@ -189,24 +207,75 @@ def get_bieres_id_from_15n(table):
         id.append(tmp)
     return id
 
+# return 2D list of nom, format, stocks, ventes, ventes,... from table 15n
+def get_stocks_ventes_from_15n(table):
+    out = []
+    numerobis = str(table)
+    action1 = 'SELECT * FROM "'
+    action2 = '" WHERE disponible_sur_carte = 1'
+    action3 = action1 + numerobis + action2
+    data = cursor.execute(action3)
+    connection.commit()
 
-#add random stock in the last stock column
-# usefull for tests, gestion stock and gestion 15n
-# input: data((id0,stock_value0),(id1, stock_value1),..)
-def add_stock(table, data):
-    d = 0
-    stock = 0
+    action4 = 'SELECT nom,format FROM bieres WHERE id = '
+    action5 = ''
     
+    id = [] #store the biere id
+    out = [] #store the biere data: id, available, stock, ventes, ...
+    for x in data:
+        #print(x)
+        id.append(x[0])
+        tmp1 = []
+        for y in x:
+            tmp1.append(y)
+        out.append(tmp1) 
+    
+    #print(out)
+    
+    for i in range(len(out)):
+        action6 = action4 + str(id[i]) + action5
+        #print(action6)
+        name_format = cursor.execute(action6)
+        connection.commit()
+        for z in name_format:
+            #print(z)
+            out[i][0] = z[0]
+            out[i][1] = z[1]
+    #print(out)   
+    return out
+
+def get_colums_names_from_15n(table):
     numerobis = str(table)
     action1 = 'SELECT * FROM "'
     action2 = '"'
     action3 = action1 + numerobis + action2
+    cursor.execute(action3)
+    
+    out = []
+    for x in cursor.description:
+        #print((x[0]))
+        out.append(x[0]) 
+    connection.commit()
+    out[0] = "Nom"
+    out[1] = "Format"
+    return out
 
+#add random stock in the last stock column
+# usefull for tests, gestion stock and gestion 15n
+# input: data((id0,stock_value0),(id1, stock_value1),..)
+# input: sv: "s" for stock and "v" for ventes
+def add_stock_or_ventes(table, data, sv):
+    d = 0
+    stock = 0
+    numerobis = str(table)
+    action1 = 'SELECT * FROM "'
+    action2 = '"'
+    action3 = action1 + numerobis + action2
     cursor.execute(action3)
     
     #get last stock column to add stock
     for x in cursor.description:
-        if x[0][0] == "s":
+        if x[0][0] == sv:
             stock = d
         d += 1
 
@@ -224,15 +293,13 @@ def add_stock(table, data):
 # input: table = (int) 87, new table
 # usefull when creating a new 15n table
 def add_old_stock(table):
-    numerobis = str(table)
-    numerominus = str(table-1)
+    numerominus = str(int(table)-1)
     d = 0
     data = []
 
     action1 = 'SELECT * FROM "'
     action2 = '"'
     action3 = action1 + numerominus + action2
-
     test = cursor.execute(action3)
 
     #get last stock column to add stock
@@ -252,8 +319,7 @@ def add_old_stock(table):
     for i in cursor.execute(action7):
    
         data.append(i)
-    
-    add_stock(table, data)
+    add_stock_or_ventes(table, data, "s")
 
     return 1
 
@@ -265,7 +331,7 @@ def add_old_stock(table):
 # input: table = (int) 87, will add bieres id and availability into table "87" from table "86"
 # usefull when creating a new 15n table
 def availability_id_15n_db(table):
-    numerobis = str(table-1)
+    numerobis = str(int(table)-1)
     numero = str(table)
     action1 = 'INSERT INTO "'
     action2 = '" (id, disponible_sur_carte) SELECT id, disponible_sur_carte FROM "'
@@ -295,6 +361,7 @@ def add_column_15n(table, type):
         elif x[0][0] == "s":
             stock += 1
         #print((x[0]))
+    connection.commit()
     if type == 0:
         action1 = 'ALTER TABLE "' 
         action2 = '" ADD "'
@@ -304,7 +371,7 @@ def add_column_15n(table, type):
         action4 = action1 + numerobis + action2 + name1 + action3
         #print(action4)
         cursor.execute(action4)
-        connection.commit
+        connection.commit()
         return 1
     
     elif type == 1:
@@ -316,9 +383,10 @@ def add_column_15n(table, type):
         action4 = action1 + numerobis + action2 + name1 + action3
         #print(action4)
         cursor.execute(action4)
-        connection.commit
+        connection.commit()
         return 1
     else:
+        
         return 0
         
 
@@ -343,19 +411,45 @@ def make_disponible_sur_carte(table, id, value):
 
     return 1
 
+
+# output: a array of array with 15n_id chef and année
+# usefull to see data in gestion 15n
+def get_15n_chef_annee():
+#    id = get15n_id()
+    out = []
+    action1 = 'SELECT id_quinzaine, auteur, annee FROM quinzaine_list'
+    tmp = cursor.execute(action1)
+    for x in tmp:
+        out.append(x)
+    #print(out[1][1]) 
+    connection.commit()
+    return out
+
+# input: list of bieres id from get_bieres_id_from_15n(87)
+# usefull for debug
+def generate_random_data(id):
+    data = []
+    for i in range(len(id)):
+        tmp = []
+        tmp.append(random.randint(5,48))
+        tmp.append(id[i][0])
+        data.append(tmp)
+    return data
+
 # make a csv with the latest stock, bire id, biere name, biere format from 15n table
 def make_csv_from_15n_table(table):
     # select id and stock from 15n table where available = 1
     # select biere name, biere format from biere table where id = id
+    # creat empty "new stock" column in csv
     # output in a csv 
     return 1
 
 def verifie_stock_csv(csv):
-    # verifie that id, name verifie what od on the biere table
+    # verifie that id, name verifie what on the biere table
     # verifie data are all int and not négatif
     return 1
 
-def add_ctock_from_csv(table,csv):
+def add_stock_from_csv(table,csv):
     #verifie_stock_csv(csv)
     #add_stock(table,csv)
     return 1
@@ -369,12 +463,3 @@ def new_biere(biere_data,active_15n):
     #copy id and add it into active 15n table
     #make new biere available to carte (into active table 15n)
     return 1
-
-#nouvelle_15n(89, "kiki", "oui")
-#availability_id_15n_db(88)
-#make_disponible_sur_carte(90, 3, 1)
-#add_column_15n(88,1)
-#add_column_15n(88,0)
-#dta = (45, 32, 12)
-#add_stock(88, dta)
-#add_old_stock(88)

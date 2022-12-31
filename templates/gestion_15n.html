@@ -12,11 +12,9 @@
     </h1>
 </div>
 
-<h1>Selectionner 15n ou en créer une</h1>
-<p>Pour accéder au graphique concernant le nombres de veaux nés vivants et celui des mort-nés,
-  écrivez ou choisissez le nom de famille d'une vache.
-  Le graphique sera généré en fonction de ce nom.
-</p>
+<h1>Selectionner ou créer une 15n</h1>
+<p>Cette page aide a selectionner/créer une 15n, vous permetant d'intéragir avec celle-ci dans les autres onglets. Comme par example pour modifier le stock, voir les ventes et statistiques...</p>
+<p>Choisissez un numéro de 15n ou créez en une nouvelle dans le menu déroulant. (Ouais c'est un peu fucked up comme menu)</p>
 
 <form method="post" class="form">
     <select name="15n_id" >
@@ -29,4 +27,39 @@
 </form>
 
 <p>{{error_message}}</p>
+
+<h1>Tableau</h1>
+
+<html>
+<style>
+table, th, td {
+  border:1px solid black;
+}
+tr:nth-child(even) {background-color:#8391b6;}
+
+</style>
+<body>
+
+<h2> </h2>
+
+<table style="width:100%">
+  <tr>
+    <th>Numéro</th>
+    <th>Chef</th>
+    <th>Année</th>
+  </tr>
+  {% for x in data %}
+    <tr>
+        {% for y in x %}
+            <td>{{y}}</td>
+        {% endfor %}
+    </tr>
+  {% endfor %}
+</table>
+
+
+</body>
+</html>
+
 {% endblock %}
+

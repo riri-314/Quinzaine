@@ -83,6 +83,26 @@ html{
 	background-color: #3e4254;
 }
 
+.menu-num {
+	z-index: 2;
+	width: 250px;
+	position: fixed;
+	bottom: 0;
+	left: 0;	
+	overflow-x: hidden;
+	padding-bottom: 50px;
+}
+
+.menu-num a {
+	text-align: center;
+	color: white;
+	font-family: serif;
+	text-decoration: none;
+	font-size: 120px;
+	display: block;
+	margin: 0px;
+}
+
 /*CSS du rectangle Titre de l'acceuil*/
 .rectangle{
 	height: 100px;
