@@ -25,7 +25,9 @@ def gestion_stock():
 @app.route("/gestion_carte",  methods=["POST", "GET"])
 def gestion_carte():
     active_15n = get_active_15n()
-    return render_template("gestion_carte.html", active_15n=active_15n)
+    data = get_carte(active_15n)
+    error_message = "Test error message"
+    return render_template("gestion_carte.html", active_15n=active_15n, error_message=error_message, data=data)
 
 @app.route("/gestion_15n", methods=["POST", "GET"])
 def gestion_15n():

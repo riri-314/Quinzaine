@@ -11,4 +11,49 @@
 
     </h1>
 </div>
+
+<h1>Ajouter ou retirer une biere de la carte</h1>
+<p>Bientot ici de magnifiques boutons pour pouvoir retirer une biere ou en ajouter une sur la carte</p>
+
+<p>{{error_message}}</p>
+
+<h1>Tableau</h1>
+
+<html>
+<style>
+table, th, td {
+  border:1px solid black;
+}
+tr:nth-child(even) {background-color:#707bab;}
+
+</style>
+<body>
+
+<h2> </h2>
+
+<table style="width:100%">
+  <tr>
+    <th>Database_id</th>
+    <th>Nom</th>
+    <th>Format</th>
+    <th>nombre_dans_contenant</th>
+    <th>Type</th>
+    <th>Degré</th>
+    <th>Prix_vente</th>
+    <th>Prix_achat</th>
+    <th>barecode</th>
+  </tr>
+  {% for x in data %}
+    <tr>
+        {% for y in x %}
+            <td>{{y}}</td>
+        {% endfor %}
+    </tr>
+  {% endfor %}
+</table>
+
+
+</body>
+</html>
+
 {%endblock%}

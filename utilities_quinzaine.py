@@ -436,6 +436,26 @@ def generate_random_data(id):
         data.append(tmp)
     return data
 
+def get_carte(table):
+    action1 = 'SELECT * FROM bieres WHERE id = '
+    action2 = ''
+    id = get_bieres_id_from_15n(table)
+    data = []
+    for i in range(len(id)):
+        id_tmp = str(id[i][0])
+        action3 = action1 + id_tmp + action2
+        data_raw = cursor.execute(action3)
+        connection.commit()
+        out = []
+        for x in data_raw:
+            tmp = []
+            for y in x:
+                tmp.append(y)
+            
+        data.append(tmp)
+    #print(data)
+    return data
+
 # make a csv with the latest stock, bire id, biere name, biere format from 15n table
 def make_csv_from_15n_table(table):
     # select id and stock from 15n table where available = 1
@@ -463,3 +483,5 @@ def new_biere(biere_data,active_15n):
     #copy id and add it into active 15n table
     #make new biere available to carte (into active table 15n)
     return 1
+
+get_carte(87)
