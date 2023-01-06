@@ -1,1 +1,2 @@
 barcode scanner: https://stackoverflow.com/questions/42325613/how-to-use-barcode-scanner-in-web-application
+interactive html/js: https://happycoding.io/tutorials/javascript/interactive-html
